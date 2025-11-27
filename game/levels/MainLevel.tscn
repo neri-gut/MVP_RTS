@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw7eo1wvnpb5u"]
+[gd_scene load_steps=5 format=3 uid="uid://cw7eo1wvnpb5u"]
+
+[ext_resource type="Script" uid="uid://cvp18j1m4lh5w" path="res://game/levels/camera_root_node_3d.gd" id="1_8tovj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fpuid"]
 
@@ -18,5 +20,18 @@ shadow_enabled = true
 environment = SubResource("Environment_3206d")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00612545, -0.0022928119, -0.0016561747)
 use_collision = true
 size = Vector3(100, 1, 100)
+
+[node name="CameraRoot-Node3D" type="Node3D" parent="."]
+script = ExtResource("1_8tovj")
+pan_speed = 0.55
+rotation_speed = 0.4
+zoom_speed = 0.25
+
+[node name="Elevation" type="Node3D" parent="CameraRoot-Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot-Node3D/Elevation"]
+transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 0, 0)
