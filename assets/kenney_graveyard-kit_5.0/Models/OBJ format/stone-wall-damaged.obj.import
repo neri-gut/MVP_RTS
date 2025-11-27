@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccgwa5xp12pfd"
+path="res://.godot/imported/stone-wall-damaged.obj-321d10cf65f54739e13115bb64bb0aee.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stone-wall-damaged.obj-321d10cf65f54739e13115bb64bb0aee.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit_5.0/Models/OBJ format/stone-wall-damaged.obj"
+dest_files=["res://.godot/imported/stone-wall-damaged.obj-321d10cf65f54739e13115bb64bb0aee.mesh", "res://.godot/imported/stone-wall-damaged.obj-321d10cf65f54739e13115bb64bb0aee.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

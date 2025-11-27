@@ -15,6 +15,7 @@ extends Node3D
 # Usamos @onready para agarrar el nodo hijo "Elevation"
 # Nota: Asume que el nodo se llama exactamente "Elevation"
 @onready var elevation_node = $Elevation
+@onready var camera = $Elevation/Camera3D
 
 # --- VARIABLES INTERNAS ---
 var _target_pos : Vector3
@@ -45,20 +46,29 @@ func _process(delta):
 func _unhandled_input(event):
 	# --- GESTIÓN DE INPUTS CON EL PLUGIN ---
 	
-	# A. ARRASTRE (PANEO)
+	# --- A. ARRASTRE (PANEO NATURAL) ---
 	if event is InputEventSingleScreenDrag:
-		# Convertimos el movimiento de pantalla (2D) a mundo (3D)
-		# Arrastrar abajo en pantalla (+Y) significa ir atrás en el mapa (+Z)
-		var move_vec = Vector3(-event.relative.x, 0, -event.relative.y)
+		# 1. Obtener hacia dónde mira la cámara REALMENTE
+		var cam_forward = camera.global_transform.basis.z
+		var cam_right = camera.global_transform.basis.x
 		
-		# (Opcional) Rotar el vector si la cámara rota sobre su eje Y
-		# move_vec = move_vec.rotated(Vector3.UP, rotation.y)
+		# 2. Aplanar los vectores (Ignorar inclinación Y)
+		# Queremos movernos sobre el suelo, no volar hacia el cielo/suelo
+		cam_forward.y = 0
+		cam_right.y = 0
 		
-		# Multiplicamos por la altura actual para que al estar lejos nos movamos más rápido
-		# Esto es un truco de UX muy importante en RTS
+		# 3. Normalizar (para que la velocidad sea constante)
+		cam_forward = cam_forward.normalized()
+		cam_right = cam_right.normalized()
+		
+		# 4. Calcular el movimiento relativo a la VISTA de la cámara
+		# -event.relative.x : Mover dedo a izquierda -> Camara a derecha
+		# -event.relative.y : Mover dedo arriba -> Camara atrás
+		var move_direction = (cam_right * -event.relative.x) + (cam_forward * -event.relative.y)
+		
+		# 5. Aplicar movimiento
 		var height_factor = _target_height / 10.0
-		
-		_target_pos += move_vec * pan_speed * height_factor * 0.05
+		_target_pos += move_direction * pan_speed * height_factor * 0.05
 
 	# B. PELLIZCO (ZOOM DE ALTURA)
 	elif event is InputEventScreenPinch:
@@ -76,4 +86,4 @@ func _unhandled_input(event):
 	elif event is InputEventScreenTwist:
 		# El plugin nos da 'event.relative' como el ángulo girado en radianes
 		# Simplemente lo restamos o sumamos al objetivo
-		_target_rotation_y -= event.relative * rotation_speed
+		_target_rotation_y += event.relative * rotation_speed
