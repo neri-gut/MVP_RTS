@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs0mfi6k5lh7w"]
+
+[ext_resource type="PackedScene" uid="uid://cwfy52prq0i4n" path="res://assets/models/GodotRobot3D/GodotRobot3rdPersonShooterFinal.glb" id="1_4b8yw"]
+[ext_resource type="Script" uid="uid://dcxwm515eyqnu" path="res://assets/models/GodotRobot3D/unit.gd" id="1_cv18q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cv18q"]
+radius = 0.453125
+height = 3.2748413
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewb0b"]
+shading_mode = 0
+albedo_color = Color(0.16078432, 1, 0.25490198, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_snti2"]
+material = SubResource("StandardMaterial3D_ewb0b")
+inner_radius = 0.6
+outer_radius = 0.7
+
+[node name="GodotRobot3d" type="Node3D"]
+
+[node name="Godot_3D_Character" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+script = ExtResource("1_cv18q")
+
+[node name="GodotRobot3rdPersonShooterFinal" parent="Godot_3D_Character" instance=ExtResource("1_4b8yw")]
+
+[node name="Skeleton3D" parent="Godot_3D_Character/GodotRobot3rdPersonShooterFinal/RobotArmature" index="0"]
+bones/0/position = Vector3(7.297783e-16, 2.5963964, 0.03231751)
+bones/0/rotation = Quaternion(0.009620612, 1.19203754e-07, 1.1468702e-09, 0.9999538)
+bones/1/rotation = Quaternion(0.03971422, 1.4890866e-14, 9.468605e-09, 0.99921113)
+bones/3/rotation = Quaternion(-0.005380423, 1.19207584e-07, 6.4139616e-10, 0.9999855)
+bones/4/position = Vector3(5.3065513e-16, 0.2416633, -0.011521787)
+bones/4/rotation = Quaternion(0.03782729, -1.19124024e-07, -4.509366e-09, 0.9992843)
+bones/5/rotation = Quaternion(0.0025802723, 4.003787e-14, -6.1518457e-10, 0.99999666)
+bones/6/rotation = Quaternion(0.0028155053, 1.1920884e-07, -3.3563433e-10, 0.9999961)
+bones/7/position = Vector3(9.293679e-08, 0.53701174, 0.38980514)
+bones/7/rotation = Quaternion(0.0028154997, 1.1920884e-07, -3.3563377e-10, 0.9999961)
+bones/8/position = Vector3(9.740859e-08, 0.012805304, 0.40856126)
+bones/8/rotation = Quaternion(0.0028155, 1.1920884e-07, -3.356338e-10, 0.9999961)
+bones/9/position = Vector3(0.38452598, 0.24637778, -0.026832)
+bones/9/rotation = Quaternion(-0.45984215, -0.395533, -0.57952785, 0.54428524)
+bones/10/rotation = Quaternion(-0.354082, 0.6198599, -0.4249985, 0.55657524)
+bones/11/rotation = Quaternion(0.27093866, -0.08482989, 0.035826173, 0.9581819)
+bones/12/rotation = Quaternion(0.017244754, 0.017160196, -0.008740393, 0.99966586)
+bones/13/position = Vector3(-0.38452595, 0.24637778, -0.026831998)
+bones/13/rotation = Quaternion(-0.46098584, 0.39438912, 0.5792833, 0.5444081)
+bones/14/rotation = Quaternion(-0.35274407, -0.62071204, 0.42524403, 0.55628735)
+bones/15/rotation = Quaternion(0.2710015, 0.084860705, -0.035722125, 0.9581654)
+bones/16/rotation = Quaternion(0.017224357, -0.017161198, 0.008677123, 0.99966675)
+bones/17/position = Vector3(0.23944092, -0.078797564, 0.051202964)
+bones/17/rotation = Quaternion(0.9944766, 0.053316202, -0.05824464, 0.06914721)
+bones/17/scale = Vector3(0.9999997, 1, 0.99990237)
+bones/18/rotation = Quaternion(0.25057784, -0.0015924375, 0.0010443985, 0.96809465)
+bones/19/rotation = Quaternion(-0.7482053, -0.095588356, 0.025664156, 0.6560435)
+bones/19/scale = Vector3(1, 1.0000001, 0.99999994)
+bones/20/rotation = Quaternion(-1.7954217e-07, 0.98945, -0.14487556, 2.3152704e-06)
+bones/20/scale = Vector3(1.0000001, 1.0000002, 1)
+bones/21/position = Vector3(-0.23944093, -0.078797325, 0.05120285)
+bones/21/rotation = Quaternion(0.98811007, -0.04945013, 0.039375614, 0.14015296)
+bones/21/scale = Vector3(0.99999976, 0.9999999, 0.9999022)
+bones/22/rotation = Quaternion(0.28833517, -0.0013504728, 0.004273842, 0.95751905)
+bones/23/rotation = Quaternion(-0.7386347, 0.020123772, -0.03557531, 0.67286575)
+bones/23/scale = Vector3(1, 0.99999994, 0.9999998)
+bones/24/rotation = Quaternion(1.6974643e-07, 0.98945, -0.14487556, -2.3162181e-06)
+bones/24/scale = Vector3(1, 1.0000002, 1)
+
+[node name="hand_R" parent="Godot_3D_Character/GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D" index="0"]
+transform = Transform3D(-0.9483359, -0.27426234, 0.15949644, 0.31125966, -0.90163743, 0.3002791, 0.061452687, 0.33440995, 0.9404217, -0.9625741, 2.4675784, 0.11663459)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Godot_3D_Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.586556, 0)
+shape = SubResource("CapsuleShape3D_cv18q")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Godot_3D_Character"]
+
+[node name="SelectionRing" type="MeshInstance3D" parent="Godot_3D_Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+visible = false
+mesh = SubResource("TorusMesh_snti2")
+
+[editable path="Godot_3D_Character/GodotRobot3rdPersonShooterFinal"]
