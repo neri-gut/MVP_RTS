@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Nuevo Proyecto de Juego"
+config/name="Proyecto Gaia"
 run/main_scene="uid://cw7eo1wvnpb5u"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
@@ -18,6 +18,21 @@ config/icon="res://icon.svg"
 [autoload]
 
 InputManager="*res://InputManager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input_devices]
 

@@ -18,7 +18,7 @@ outer_radius = 0.7
 
 [node name="GodotRobot3d" type="Node3D"]
 
-[node name="Godot_3D_Character" type="CharacterBody3D" parent="."]
+[node name="Godot_3D_Character" type="CharacterBody3D" parent="." groups=["Units"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 script = ExtResource("1_cv18q")
 
@@ -72,6 +72,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.586556, 0)
 shape = SubResource("CapsuleShape3D_cv18q")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Godot_3D_Character"]
+avoidance_enabled = true
+debug_enabled = true
 
 [node name="SelectionRing" type="MeshInstance3D" parent="Godot_3D_Character"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)

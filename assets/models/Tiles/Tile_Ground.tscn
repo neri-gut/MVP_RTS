@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cikcm3gssxj00"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dsxuo"]
+subdivide_width = 15
+subdivide_depth = 15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qkjw"]
+shading_mode = 2
+albedo_color = Color(0.34087646, 0.23932895, 0.015101456, 1)
+
+[node name="TileGround" type="Node3D"]
+
+[node name="TileMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_dsxuo")
+surface_material_override/0 = SubResource("StandardMaterial3D_4qkjw")
