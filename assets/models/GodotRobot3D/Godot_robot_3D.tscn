@@ -1,26 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs0mfi6k5lh7w"]
+[gd_scene load_steps=8 format=3 uid="uid://bs0mfi6k5lh7w"]
 
 [ext_resource type="PackedScene" uid="uid://cwfy52prq0i4n" path="res://assets/models/GodotRobot3D/GodotRobot3rdPersonShooterFinal.glb" id="1_4b8yw"]
-[ext_resource type="Script" uid="uid://dcxwm515eyqnu" path="res://assets/models/GodotRobot3D/unit.gd" id="1_cv18q"]
+[ext_resource type="Script" uid="uid://dcxwm515eyqnu" path="res://assets/models/GodotRobot3D/unit_controller.gd" id="1_cv18q"]
+[ext_resource type="Script" uid="uid://bok2bhnmjvm4" path="res://assets/models/GodotRobot3D/selection_component.gd" id="3_ewb0b"]
+[ext_resource type="Script" uid="uid://cj4am5k00abhr" path="res://assets/models/GodotRobot3D/movement_component.gd" id="3_snti2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cv18q"]
 radius = 0.453125
 height = 3.2748413
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewb0b"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snti2"]
 shading_mode = 0
 albedo_color = Color(0.16078432, 1, 0.25490198, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_snti2"]
-material = SubResource("StandardMaterial3D_ewb0b")
+material = SubResource("StandardMaterial3D_snti2")
 inner_radius = 0.6
 outer_radius = 0.7
 
 [node name="GodotRobot3d" type="Node3D"]
 
 [node name="Godot_3D_Character" type="CharacterBody3D" parent="." groups=["Units"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, 0)
 script = ExtResource("1_cv18q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Godot_3D_Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.586556, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_cv18q")
 
 [node name="GodotRobot3rdPersonShooterFinal" parent="Godot_3D_Character" instance=ExtResource("1_4b8yw")]
 
@@ -67,17 +74,22 @@ bones/24/scale = Vector3(1, 1.0000002, 1)
 [node name="hand_R" parent="Godot_3D_Character/GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D" index="0"]
 transform = Transform3D(-0.9483359, -0.27426234, 0.15949644, 0.31125966, -0.90163743, 0.3002791, 0.061452687, 0.33440995, 0.9404217, -0.9625741, 2.4675784, 0.11663459)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Godot_3D_Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.586556, 0)
-shape = SubResource("CapsuleShape3D_cv18q")
+[node name="Components" type="Node3D" parent="Godot_3D_Character"]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Godot_3D_Character"]
+[node name="MovementComponent" type="Node3D" parent="Godot_3D_Character/Components"]
+script = ExtResource("3_snti2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Godot_3D_Character/Components/MovementComponent"]
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="SelectionRing" type="MeshInstance3D" parent="Godot_3D_Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+[node name="SelectionComponent" type="Node3D" parent="Godot_3D_Character/Components"]
+script = ExtResource("3_ewb0b")
+
+[node name="SelectionRing" type="MeshInstance3D" parent="Godot_3D_Character/Components/SelectionComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
 visible = false
 mesh = SubResource("TorusMesh_snti2")
+skeleton = NodePath("../../..")
 
 [editable path="Godot_3D_Character/GodotRobot3rdPersonShooterFinal"]

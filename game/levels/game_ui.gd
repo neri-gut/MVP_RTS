@@ -1,3 +1,4 @@
+class_name GameUI
 extends CanvasLayer
 
 @onready var btn_deselect = $BtnDeselect
@@ -33,18 +34,14 @@ func _on_btn_deselect_pressed():
 
 func _on_btn_mode_gui_input(event):
 	if event is InputEventScreenTouch and event.pressed:
-		# MANUALMENTE cambiamos el estado del botón (On <-> Off)
+		# cambiamos el estado del botón (On <-> Off)
 		btn_mode.button_pressed = !btn_mode.button_pressed
-		
-		# Llamamos a la lógica de cambio de modo
-		_on_mode_toggled(btn_mode.button_pressed)
-		
+
 		# Evitamos que la cámara se mueva al tocar el botón
 		get_viewport().set_input_as_handled()
 
 func _on_mode_toggled(button_pressed):
 	is_selection_mode_active = button_pressed
-	print("Modo Selección: ", is_selection_mode_active) # Debug
 
 func show_selection_menu():
 	if btn_deselect:
@@ -53,4 +50,7 @@ func show_selection_menu():
 func hide_selection_menu():
 	if btn_deselect:
 		btn_deselect.visible = false
-		
+
+func turn_off_selection_mode():
+	if btn_mode:
+		btn_mode.button_pressed = false

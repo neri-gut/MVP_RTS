@@ -1,0 +1,45 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://0l27x8js5lnn"
+path.s3tc="res://.godot/imported/Godot_Robot_Rojo_GodotRedPalette.png-d9b53518078fd25bdf3d219a211b0354.s3tc.ctex"
+path.etc2="res://.godot/imported/Godot_Robot_Rojo_GodotRedPalette.png-d9b53518078fd25bdf3d219a211b0354.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d6f27ea026814a839b6c9786f718b5fd"
+}
+
+[deps]
+
+source_file="res://assets/models/Unit_Enemy/Godot_Robot_Rojo_GodotRedPalette.png"
+dest_files=["res://.godot/imported/Godot_Robot_Rojo_GodotRedPalette.png-d9b53518078fd25bdf3d219a211b0354.s3tc.ctex", "res://.godot/imported/Godot_Robot_Rojo_GodotRedPalette.png-d9b53518078fd25bdf3d219a211b0354.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
