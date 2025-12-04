@@ -26,7 +26,6 @@ script = ExtResource("1_cv18q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Godot_3D_Character"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.586556, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_cv18q")
 
 [node name="GodotRobot3rdPersonShooterFinal" parent="Godot_3D_Character" instance=ExtResource("1_4b8yw")]

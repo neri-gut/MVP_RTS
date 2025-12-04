@@ -10,12 +10,7 @@ extends Node3D
 @onready var selector = $UnitSelector
 
 func _ready():
-	
-	if game_ui:
-		print("[Cámara] GameUI asignada correctamente: ", game_ui.name)
-	else:
-		print("[Cámara] ERROR: GameUI es NULL en el Inspector")
-		
+
 	# Inicializamos los subsistemas pasándoles lo que necesitan
 	mover.setup(self, elevation_node, camera)
 	selector.setup(camera, game_ui)
@@ -24,9 +19,7 @@ func _ready():
 	if game_ui:
 		if game_ui.has_signal("on_deselect_pressed"):
 			game_ui.on_deselect_pressed.connect(selector.deselect_all)
-			print("✅ [Cámara] Señal de UI conectada")
-		else:
-			print("La UI n tiene la señal 'on_deselect_pressed'")
+	#TODO: Se debe refactorizar ya que todos lo personajes tendran el nodo de seleccion
 
 func _process(delta):
 	# Delegamos el movimiento suave

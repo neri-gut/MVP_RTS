@@ -15,10 +15,10 @@ var is_dragging_box : bool = false
 func setup(cam: Camera3D, ui: CanvasLayer):
 	camera = cam
 	game_ui = ui
-	print("🔍 [Selector] Recibí la UI: ", game_ui)
 
 # --- RAYCAST (Toque simple) ---
 func handle_tap(screen_pos : Vector2):
+	
 	var space_state = camera.get_world_3d().direct_space_state
 	var ray_origin = camera.project_ray_origin(screen_pos)
 	var ray_end = ray_origin + camera.project_ray_normal(screen_pos) * 1000.0
@@ -73,15 +73,17 @@ func end_box(end_pos: Vector2):
 func _calculate_box_selection(drag_end):
 	var rect = Rect2(drag_start, drag_end - drag_start).abs()
 	
-	# Solo limpiamos si no estamos agregando (por ahora limpiamos siempre)
-	if rect.size.length() > 10: # Evitar clics accidentales pequeños
+	if rect.size.length() > 10:
 		deselect_all()
 		
+		# 1. ¿Encuentra a alguien en el grupo?
 		var all_units = get_tree().get_nodes_in_group("Units")
+		
 		for unit in all_units:
-			# Solo seleccionamos mis unidades (team_id 0)
+			# 2. Chequeo de Equipo
 			if "team_id" in unit and unit.team_id != 0: continue
 			
+			# 3. Chequeo de Posición en Pantalla
 			var screen_pos = camera.unproject_position(unit.global_position)
 			if rect.has_point(screen_pos):
 				if not camera.is_position_behind(unit.global_position):
@@ -96,10 +98,7 @@ func _add_to_selection(unit):
 	unit.select()
 	selected_units.append(unit)
 	if game_ui: 
-		print("✅ [Selector] Llamando a show_selection_menu")
 		game_ui.show_selection_menu()
-	else:
-		print("❌ [Selector] ERROR: game_ui es NULL al intentar mostrar menú")
 
 func deselect_all():
 	for unit in selected_units:
