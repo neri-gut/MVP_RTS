@@ -1,5 +1,21 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-.vscode/
 .keystone
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs y temporales
+logs/
+*.log
+tmp/
+
+# Godot específico
+*.import
+.import/
+export.cfg
+export_presets.cfg
