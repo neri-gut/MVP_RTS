@@ -1,16 +1,21 @@
 # Godot 4+ specific ignores
 .godot/
-.nomedia
+/android/
+.keystone
 
-# Godot-specific ignores
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs y temporales
+logs/
+*.log
+tmp/
+
+# Godot específico
+*.import
 .import/
 export.cfg
-export_credentials.cfg
-
-# Imported translations (automatically generated from CSV files)
-*.translation
-
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
+export_presets.cfg

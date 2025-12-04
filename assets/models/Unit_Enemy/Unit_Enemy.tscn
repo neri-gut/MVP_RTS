@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://du831rj75bgt3"]
+
+[ext_resource type="PackedScene" uid="uid://bg8ufge7l3c57" path="res://assets/models/Unit_Enemy/Godot_Robot_Rojo.glb" id="1_vl4hl"]
+[ext_resource type="Script" uid="uid://dij7qfs0dt8fs" path="res://assets/models/Unit_Enemy/unit_controller.gd" id="1_x676l"]
+[ext_resource type="Script" uid="uid://cj4am5k00abhr" path="res://assets/models/GodotRobot3D/movement_component.gd" id="2_x676l"]
+[ext_resource type="Script" uid="uid://bok2bhnmjvm4" path="res://assets/models/GodotRobot3D/selection_component.gd" id="4_x676l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dc8aj"]
+radius = 0.453125
+height = 3.2748413
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snti2"]
+shading_mode = 0
+albedo_color = Color(0.16078432, 1, 0.25490198, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_vi1nm"]
+material = SubResource("StandardMaterial3D_snti2")
+inner_radius = 0.6
+outer_radius = 0.7
+
+[node name="UnitEnemy" type="Node3D"]
+
+[node name="Unit_Enemy_3D" type="CharacterBody3D" parent="." groups=["Enemies"]]
+script = ExtResource("1_x676l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Unit_Enemy_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.586556, 0)
+shape = SubResource("CapsuleShape3D_dc8aj")
+
+[node name="Godot_Robot_Rojo" parent="Unit_Enemy_3D" instance=ExtResource("1_vl4hl")]
+
+[node name="Skeleton3D" parent="Unit_Enemy_3D/Godot_Robot_Rojo/RobotArmature" index="0"]
+bones/0/position = Vector3(-0.009658258, 2.3448908, -0.004033763)
+bones/0/rotation = Quaternion(-0.12089027, -0.3227016, 0.008283024, 0.9387123)
+bones/1/rotation = Quaternion(0.10923788, 0.002960721, -0.01920659, 0.9938256)
+bones/2/rotation = Quaternion(0.10841426, -0.00055157626, -0.0065818583, 0.9940839)
+bones/3/rotation = Quaternion(0.13742562, -0.0008992216, -0.0064580264, 0.9904907)
+bones/4/position = Vector3(-6.16958e-08, 0.26624018, -0.010632563)
+bones/4/rotation = Quaternion(-0.14176965, 0.22173011, -0.09002569, 0.9605376)
+bones/5/rotation = Quaternion(0.018198697, 0.052141447, 0.10168435, 0.9932827)
+bones/6/rotation = Quaternion(0.004638977, 0.03281483, -0.00069219375, 0.9994505)
+bones/7/position = Vector3(1.9126351e-07, 0.53701174, 0.3898052)
+bones/7/rotation = Quaternion(0.003469636, 0.039989553, -0.007975482, 0.9991623)
+bones/8/position = Vector3(0.00066367915, 0.07782151, 0.40075597)
+bones/8/rotation = Quaternion(0.0028152624, 5.3405195e-08, -2.5017546e-09, 0.9999961)
+bones/9/position = Vector3(0.38452578, 0.24637775, -0.026831955)
+bones/9/rotation = Quaternion(-0.65235025, -0.74800026, -0.100230575, -0.06991811)
+bones/10/rotation = Quaternion(-0.40379742, 0.62453324, -0.39079088, 0.54239124)
+bones/11/rotation = Quaternion(0.44961402, -0.079953924, 0.053487163, 0.888028)
+bones/12/rotation = Quaternion(-0.36531666, -0.7748606, 0.1923279, 0.4786907)
+bones/13/position = Vector3(-0.38216707, 0.3184535, -0.06502225)
+bones/13/rotation = Quaternion(-0.36000842, 0.8167949, 0.43880957, 0.10337514)
+bones/14/rotation = Quaternion(-0.4829023, -0.56563264, 0.46036348, 0.48469657)
+bones/15/rotation = Quaternion(0.8237672, 0.047161914, -0.09210924, 0.55740416)
+bones/16/rotation = Quaternion(-0.23678999, 0.12159002, 0.03847889, 0.96315414)
+bones/17/position = Vector3(0.23944096, -0.07879796, 0.051203035)
+bones/17/rotation = Quaternion(0.8482968, 0.18913242, -0.43250713, 0.23991477)
+bones/17/scale = Vector3(0.9998425, 1.000058, 1.0000017)
+bones/18/rotation = Quaternion(0.44924235, -0.013112954, -0.022373436, 0.8930335)
+bones/19/rotation = Quaternion(-0.6511324, -0.001986786, 0.0018186353, 0.75895935)
+bones/19/scale = Vector3(1.0000012, 1.0000066, 0.99999064)
+bones/20/rotation = Quaternion(-4.2195853e-07, 0.9894469, -0.14489613, 2.779231e-06)
+bones/20/scale = Vector3(0.99999976, 0.9999667, 1.0000334)
+bones/21/position = Vector3(-0.23944087, -0.07879804, 0.05120273)
+bones/21/rotation = Quaternion(0.9857211, -0.06469169, -0.02024124, 0.15413988)
+bones/21/scale = Vector3(1, 1.0002801, 0.99962217)
+bones/22/rotation = Quaternion(0.5065731, 0.010933966, 0.02167234, 0.8618553)
+bones/23/rotation = Quaternion(-0.793572, 0.1563318, 0.012647646, 0.5879148)
+bones/23/scale = Vector3(1.0000043, 1.0000381, 0.99995667)
+bones/24/rotation = Quaternion(-1.5289102e-06, 0.9894227, -0.1450614, -1.8039971e-05)
+bones/24/scale = Vector3(1.0000001, 0.9999668, 1.0000333)
+
+[node name="hand_R" parent="Unit_Enemy_3D/Godot_Robot_Rojo/RobotArmature/Skeleton3D" index="0"]
+transform = Transform3D(-0.98314124, 0.14457414, -0.111942515, -0.10560736, 0.050800085, 0.9931092, 0.14926466, 0.9881888, -0.034675688, -0.58417827, 3.2517576, 0.51243263)
+
+[node name="Components" type="Node3D" parent="Unit_Enemy_3D"]
+
+[node name="MovementComponent" type="Node3D" parent="Unit_Enemy_3D/Components"]
+script = ExtResource("2_x676l")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Unit_Enemy_3D/Components/MovementComponent"]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="SelectionComponent" type="Node3D" parent="Unit_Enemy_3D/Components"]
+script = ExtResource("4_x676l")
+
+[node name="SelectionRing" type="MeshInstance3D" parent="Unit_Enemy_3D/Components/SelectionComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+visible = false
+mesh = SubResource("TorusMesh_vi1nm")
+skeleton = NodePath("../../..")
+
+[editable path="Unit_Enemy_3D/Godot_Robot_Rojo"]
